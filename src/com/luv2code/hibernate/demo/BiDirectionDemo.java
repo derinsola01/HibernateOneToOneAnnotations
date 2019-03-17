@@ -20,7 +20,7 @@ public class BiDirectionDemo {
 		try {
 			session.beginTransaction();
 			
-			int theId = 1;
+			int theId = 2;
 			System.out.println("Search about to begin instructorDetail: ");
 			InstructorDetail tempInstructorDetail = session.get(InstructorDetail.class, theId);
 			System.out.println("Found instructorDetail: " + tempInstructorDetail);
@@ -31,7 +31,6 @@ public class BiDirectionDemo {
 			exc.printStackTrace();
 		}
 		finally {
-			session.flush();
 			session.close();
 			factory.close();
 		}
