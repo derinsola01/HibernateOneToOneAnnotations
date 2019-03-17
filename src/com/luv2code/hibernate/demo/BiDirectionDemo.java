@@ -26,7 +26,13 @@ public class BiDirectionDemo {
 			System.out.println("Found instructorDetail: " + tempInstructorDetail);
 			System.out.println("For Instructor: " + tempInstructorDetail.getInstructor());
 			session.getTransaction().commit();
-		} finally {
+		} 
+		catch (Exception exc) {
+			exc.printStackTrace();
+		}
+		finally {
+			session.flush();
+			session.close();
 			factory.close();
 		}
 	}
