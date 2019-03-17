@@ -7,7 +7,7 @@ import org.hibernate.cfg.Configuration;
 import com.luv2code.hibernate.entity.Instructor;
 import com.luv2code.hibernate.entity.InstructorDetail;
 
-public class DeleteDemo {
+public class BiDirectionDemo {
 
 	public static void main(String[] args) {
 		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml")
@@ -21,15 +21,10 @@ public class DeleteDemo {
 			session.beginTransaction();
 			
 			int theId = 1;
-			Instructor tempInstructor = session.get(Instructor.class, theId);
-			System.out.println("Found instructor: " + tempInstructor);
-			
-			if (tempInstructor != null) {
-				System.out.println("Deleting instrutor: " + tempInstructor);
-				session.delete(tempInstructor);
-			} else 
-				System.out.println("Instructor with ID not found.");
-			
+			System.out.println("Search about to begin instructorDetail: ");
+			InstructorDetail tempInstructorDetail = session.get(InstructorDetail.class, theId);
+			System.out.println("Found instructorDetail: " + tempInstructorDetail);
+			System.out.println("For Instructor: " + tempInstructorDetail.getInstructor());
 			session.getTransaction().commit();
 		} finally {
 			factory.close();
